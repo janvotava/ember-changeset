@@ -790,6 +790,11 @@ export function changeset(
     ) /*: RelayDef */ {
       let cache /*: RelayCache */ = get(this, RELAY_CACHE);
 
+
+      if (isArray(value)) {
+        return value;
+      }
+
       if (!(key in cache)) {
         cache[key] = Relay.create({ key, changeset: this, content: value });
       }
